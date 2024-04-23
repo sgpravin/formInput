@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Inp from "./scenarios";
 
 function App() {
+  const [scenario, setScenario] = useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <select
+        className="scenario"
+        onChange={(e) => setScenario(e.target.value)}
+      >
+        <option value="">Select Scenarios</option>
+        <option value="create">Create</option>
+        <option value="edit">Edit</option>
+        <option value="disable">Disable</option>
+      </select>
+      {scenario && <Inp scenario={scenario} />}
     </div>
   );
 }
